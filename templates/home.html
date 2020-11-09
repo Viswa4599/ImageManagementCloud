@@ -7,11 +7,13 @@
 <div class="container">
   <h1>Hi {{ user.username }}!</h1>
     <p><a href="{% url 'logout' %}">Log Out</a></p>
-   <button><a href= "/upload">Upload Image</a></button>
-   <button><a href= "/search">Search Images</a></button> 
+   <button class = "btn btn-light"><a href= "/upload">Upload Image</a></button>
+   <button class = "btn btn-light"><a href= "/search">Search Images</a></button> 
 </div> 
 {% else %}
+<div class="container align-items-center">
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+  <button class = "btn btn-outline-info"><a href="{% url 'login' %}">Log In</a></button>
+</div>
 {% endif %}
 {% endblock %}

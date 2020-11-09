@@ -14,11 +14,15 @@
     {% if success %}
     <p> {{message}} </p>
     {% endif %}
-    <form method = "post" enctype="multipart/form-data" class = "container"> 
+    <div class = "container">
+    <form method = "post" enctype="multipart/form-data">
+        <div class = "form-group col-sm-2"> 
         {% csrf_token %} 
         {{ form.as_p }} 
         <button type="submit">Upload</button> 
-    </form> 
-    
+        </form> 
+        </div>
+    <a href="../search" class="btn btn-info" role="button">Search existing images</a>
+    </div>
 </body> 
 </html> 

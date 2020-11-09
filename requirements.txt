@@ -1,3 +1,4 @@
 PIL
 pymongo
 djongo
+gunicorn==19.6.0

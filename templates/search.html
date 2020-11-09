@@ -1,0 +1,79 @@
+<html lang="en"> 
+<head> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8"> 
+    <title>Image Upload</title> 
+</head> 
+<body>
+ <div class="jumbotron text-center">
+  <h1>Search Images</h1>
+  <p></p>
+</div>
+{% if success %}
+<div class="container">
+{%for i in listofimages %} 
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Image</h3>
+       <img src="/media/images/{{i.name}}" width = "50%" height = "auto"> 
+    </div>
+    <div class="col-sm-8">
+      <h3>Metadata</h3>
+      <p>{{i}}</p>
+    </div>
+  </div>
+</div> 
+<br>
+{% endfor %}
+{% endif %}
+
+<div class = "container">
+<form method = "post">
+   {% csrf_token %} 
+    <button name="listall" class = "btn btn-info" type="submit" value="yes">List All Images</button>
+</form>
+<br>
+<h2> Enter Values to search images<h2>
+<h3>Note: The database has been populated with pictures from OnePlus and Samsung mobiles with respective 'Make' as 'OnePlus' and 'samsung'.</h3>
+<form method = "post">
+   {% csrf_token %} 
+    <div class ="form-group col-sm-2" >
+    <label for ="Make"> Make </label>
+    <input type="text" class="form-control" name="Make" id="Make" placeholder="Enter make" value = "OnePlus">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="minSize"> Minimum Size (MB) </label>
+    <input type="text" class="form-control" id="minSize" name="minSize" placeholder="Enter minimum size" value = "0">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="maxSize"> Maximum Size (MB) </label>
+    <input type="text" class="form-control" id="maxSize" name = "maxSize" placeholder="Enter maximum size" value ="500">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="minISO"> Minimum ISO </label>
+    <input type="text" class="form-control" id="minISO" name="minISO" placeholder="Enter minimum iso" value = "0">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="maxISO"> Maximum ISO </label>
+    <input type="text" class="form-control" id="maxISO" name = "maxISO" placeholder="Enter maximum iso" value = "5000">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="minShut"> Minimum Shutter Speed </label>
+    <input type="text" class="form-control" id="minShut" name = "minShut" placeholder="Enter minimum shutter speed" value="0">
+    </div>
+    <div class ="form-group col-sm-2" >
+    <label for ="maxShut"> Maximum Shutter Speed </label>
+    <input type="text" class="form-control" id="maxShut" name = "maxShut" placeholder="Enter maximum shutter speed" value ="50">
+    </div>
+    <button type="submit" class = "btn btn-primary">Submit</button>
+</form>
+<a href="../upload" class="btn btn-info" role="button">Upload new image</a>
+</div>
+</body>
+</html>
+
+
